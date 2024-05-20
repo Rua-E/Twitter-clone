@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-
 import Image from "next/image";
+
 import useUser from "@/hooks/useUser";
 
 interface AvatarProps {
@@ -36,7 +36,8 @@ const Avatar: React.FC<AvatarProps> = ({
                 transition
                 cursor-pointer
                 relative
-            `}>
+            `}
+        >
             <Image 
                 fill
                 style={{
@@ -45,7 +46,7 @@ const Avatar: React.FC<AvatarProps> = ({
                 }}
                 alt="Avatar"
                 onClick={onClick}
-                src={fetchedUser?.profileImage}
+                src={fetchedUser?.profileImage || '/images/placeholder.png'}
             />
         </div>
     );
