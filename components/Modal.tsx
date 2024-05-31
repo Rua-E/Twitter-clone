@@ -39,7 +39,7 @@ const handleSubmit = useCallback(() => {
     onSubmit();
 }, [disabled, onSubmit]);
 
-if(!isOpen) {
+if (!isOpen) {
     return null;
     }
 

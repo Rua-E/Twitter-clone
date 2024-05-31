@@ -8,6 +8,7 @@ import useUser from "@/hooks/useUser";
 
 import Modal from "../Modal";
 import Input from "../Input";
+import ImageUpload from "../ImageUpload";
 
 const EditModal = () => {
     const { data: currentUser } = useCurrentUser();
@@ -21,12 +22,18 @@ const EditModal = () => {
     const [bio, setBio] = useState('');
 
     useEffect(() => {
-        setProfileImage(currentUser?.profileImage);
-        setCoverImage(currentUser?.coverImage);
-        setName(currentUser?.name);
-        setUsername(currentUser?.username);
-        setBio(currentUser?.bio);
-    }, [currentUser]);
+        setProfileImage(currentUser?.profileImage)
+        setCoverImage(currentUser?.coverImage)
+        setName(currentUser?.name)
+        setUsername(currentUser?.username)
+        setBio(currentUser?.bio)
+    }, [
+        currentUser?.name,
+        currentUser?.username,
+        currentUser?.bio,
+        currentUser?.profileImage,
+        currentUser?.coverImage,
+    ]);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -55,6 +62,18 @@ const EditModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
+            <ImageUpload 
+                value={profileImage}
+                disabled={isLoading}
+                onChange={(image) => setProfileImage(image)}
+                label="Upload profile image"
+                />
+            <ImageUpload 
+                value={coverImage}
+                disabled={isLoading}
+                onChange={(image) => setCoverImage(image)}
+                label="Upload cover image"
+                />
             <Input 
                 placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
@@ -77,6 +96,7 @@ const EditModal = () => {
     )
 
     return (
+        
         <Modal 
             disabled={isLoading}
             isOpen={editModal.isOpen}
