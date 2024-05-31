@@ -43,7 +43,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             'image/png': []
         }
     });
-
     return (
         <>
         <div 
@@ -54,11 +53,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 <input { ...getInputProps()} />
                 {
                     base64 ? (
-                        <div className="flex items-center justify-center"> 
+                        <div className="flex items-center justify-center" > 
                             <Image 
                                 src={base64}
-                                height={100}
-                                width={100}
+                                height="100"
+                                width="100"
                                 alt="Uploaded image"
                             />
                         </div>
