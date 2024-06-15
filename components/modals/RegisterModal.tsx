@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
 import useLoginModal from "@/hooks/useLoginModal";
